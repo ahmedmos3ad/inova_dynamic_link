@@ -79,7 +79,7 @@ You can retrieve a dynamic link using the following method:
 
 ```ruby
 url_to_check = "https://your.dynamic.link/url"
-response = branch.get(url_to_check)
+response = InovaDynamicLink::Branch.get(url_to_check)
 puts "Dynamic Link Information: #{response}"
 ```
 
@@ -89,7 +89,7 @@ You can delete a dynamic link using the following method:
 
 ```ruby
 url_to_delete = "<https://your.dynamic.link/to/delete>"
-result = branch.delete(url_to_delete)
+result = InovaDynamicLink::Branch.delete(url_to_delete)
 puts "Delete Dynamic Link Result: #{result}"
 ```
 
