@@ -44,7 +44,7 @@ module InovaDynamicLink
       config_hash_array = branch_link_configuration_array.map{|config| config.to_hash}
       response = HTTParty.post(BRANCH_URI + "/bulk/" + @branch_key, headers: DEFAULT_HEADERS, body: config_hash_array.to_json)
       raise HTTParty::ResponseError, response unless response.code == 200
-      JSON.parse(response.body)
+      JSON.parse(response.body).map{|resp| resp["url"]}
     end
 
     def get(url)
