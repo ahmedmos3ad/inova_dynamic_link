@@ -25,7 +25,7 @@ module InovaDynamicLink
     def create(branch_link_configuration)
       raise ArgumentError, "argument must be a InovaDynamicLink::BranchLinkConfiguration" unless branch_link_configuration.is_a?(InovaDynamicLink::BranchLinkConfiguration)
       body = {
-        branch_key: @branch_key,
+        branch_key: @branch_key
       }.merge(branch_link_configuration.to_hash)
 
       response = HTTParty.post(BRANCH_URI, headers: DEFAULT_HEADERS, body: body.to_json)
@@ -34,6 +34,7 @@ module InovaDynamicLink
       raise HTTParty::ResponseError, json_resp unless response.code == 200
       json_resp["url"]
     end
+
     # branch_link_configuration_array is an array of InovaDynamicLink::BranchLinkConfiguration
     def bulk_create(branch_link_configuration_array)
       branch_link_configuration_array = [branch_link_configuration_array].compact_blank unless branch_link_configuration_array.is_a?(Array)
@@ -41,10 +42,10 @@ module InovaDynamicLink
       unless branch_link_configuration_array.all? { |o| o.is_a?(InovaDynamicLink::BranchLinkConfiguration) }
         raise ArgumentError, "argument must be an array of InovaDynamicLink::BranchLinkConfiguration"
       end
-      config_hash_array = branch_link_configuration_array.map{|config| config.to_hash}
+      config_hash_array = branch_link_configuration_array.map { |config| config.to_hash }
       response = HTTParty.post(BRANCH_URI + "/bulk/" + @branch_key, headers: DEFAULT_HEADERS, body: config_hash_array.to_json)
       raise HTTParty::ResponseError, response unless response.code == 200
-      JSON.parse(response.body).map{|resp| resp["url"]}
+      JSON.parse(response.body).map { |resp| resp["url"] }
     end
 
     def get(url)
