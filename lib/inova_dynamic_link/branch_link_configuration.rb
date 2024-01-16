@@ -12,9 +12,10 @@ module InovaDynamicLink
         tags: {},
         type: 0,
         duration: 7200,
+        extra_data: {},
         **attributes
       }
-      raise ArgumentError, "extra_data must be a hash" if attributes[:extra_data] && !attributes[:extra_data].is_a?(Hash)
+      raise ArgumentError, "extra_data must be a hash" unless attributes[:extra_data].is_a?(Hash)
       attributes.each do |key, value|
         if respond_to?(:"#{key}=")
           send(:"#{key}=", value)
