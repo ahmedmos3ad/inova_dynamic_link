@@ -7,13 +7,13 @@ InovaDynamicLink is a Ruby gem designed to streamline interactions with the Bran
 To integrate InovaDynamicLink into your project, add the following line to your application's Gemfile:
 
 ```ruby
-gem 'inova_dynamic_link', '~> 0.2.0'
+gem 'inova_dynamic_link', '~> 0.2.2'
 ```
 
 Or, install the gem directly using the following command:
 
 ```bash
-gem install inova_dynamic_link -v 0.2.0
+gem install inova_dynamic_link -v 0.2.2
 ```
 
 ## Requirements
