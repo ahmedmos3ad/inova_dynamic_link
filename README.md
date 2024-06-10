@@ -52,7 +52,7 @@ link_configuration = InovaDynamicLink::BranchLinkConfiguration.new(
   campaign: 'spring_sale',
   extra_data: { product_id: 123 }
 )
-dynamic_link =  InovaDynamicLink::Branch.create(link_configuration)
+dynamic_link =  InovaDynamicLink::Branch.new.create(link_configuration)
 puts "Dynamic Link: #{dynamic_link}"
 ```
 
@@ -69,7 +69,7 @@ link_configurations = [
   InovaDynamicLink::BranchLinkConfiguration.new(...)
   # Add more configurations as needed
 ]
-dynamic_links = InovaDynamicLink::Branch.bulk_create(link_configurations)
+dynamic_links = InovaDynamicLink::Branch.new.bulk_create(link_configurations)
 puts "Dynamic Links: #{dynamic_links}"
 ```
 
@@ -79,7 +79,7 @@ You can retrieve a dynamic link using the following method:
 
 ```ruby
 url_to_check = "https://your.dynamic.link/url"
-response = InovaDynamicLink::Branch.get(url_to_check)
+response = InovaDynamicLink::Branch.new.get(url_to_check)
 puts "Dynamic Link Information: #{response}"
 ```
 
@@ -89,7 +89,7 @@ You can delete a dynamic link using the following method:
 
 ```ruby
 url_to_delete = "<https://your.dynamic.link/to/delete>"
-result = InovaDynamicLink::Branch.delete(url_to_delete)
+result = InovaDynamicLink::Branch.new.delete(url_to_delete)
 puts "Delete Dynamic Link Result: #{result}"
 ```
 
